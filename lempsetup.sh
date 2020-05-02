@@ -3,6 +3,8 @@ if [ "$(id -u)" != "0" ]; then
 	echo "You must be root to run this script"
 		exit 1
 else
+	echo "Installing required packages"
+	dnf install wget unzip -y
 	echo "Setting up nginx"
 	dnf install nginx -y
 	systemctl enable nginx
@@ -19,7 +21,8 @@ else
 	
 	echo "setting up PHP"
 	dnf install php-fpm php-mysqlnd php-json php-gd php-xml php-mbstring tar curl -y
-	wget 
+	wget https://raw.githubusercontent.com/chikorita157/WordpressVPSSetupScripts/master/www.conf?token=AABHLH37FBXZZ5DQYTJ7NBC6VXEGO
+	mv www.conf /etc/php-fpm.d
 	sudo systemctl enable php-fpm
 	systemctl start php-fpm
 	
