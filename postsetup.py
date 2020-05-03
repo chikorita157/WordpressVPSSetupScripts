@@ -17,7 +17,7 @@ else:
 
 domainName = ""
 userName = ""
-sqlpassword = createpassword()
+sqlpassword = generatepassword()
 
 while len(domainName) == 0:
     domainName = input("Enter the domain name to your website: ")
