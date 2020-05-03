@@ -58,15 +58,15 @@ fin.write(data)
 fin.close()
 
 print("Creating user " + userName)
-os.system("adduser" + userName)
+os.system("adduser " + userName)
 os.system("cp -R ~/.ssh /home/" + userName)
 os.system("chown " + userName + ":" + userName + " .ssh -R")
 print("Copying configs")
-os.system("cp " + script_dir + "nginx.conf /etc/nginx/");
-os.system("cp " + script_dir + domainName + ".conf /etc/nginx/conf.d");
-os.system("cp " + script_dir + "www.conf /etc/php/7.4/fpm/pool.d/conf.d");
+os.system("cp " + script_dir + "/nginx.conf /etc/nginx/");
+os.system("cp " + script_dir + "/" * domainName + ".conf /etc/nginx/conf.d");
+os.system("cp " + script_dir + "/www.conf /etc/php/7.4/fpm/pool.d/conf.d");
 print("Creating database for Wordpress")
-os.system("mysql -u root –p < dbcreation.sql")
+os.system("mysql -u root –p < " + script_dir + "dbcreation.sql")
 print("Restarting Services")
 os.system("service php7.4-fpm restart");
 os.system("service nginx restart");
