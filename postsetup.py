@@ -44,7 +44,7 @@ data = fin.read()
 data = data.replace('<targetusername>', userName)
 data = data.replace('<domaib>', domainName)
 fin.close()
-fin = open(os.path.normpath("/etc/nginx/conf.d", domainName + ".conf"), "wt")
+fin = open(os.path.normpath("/etc/nginx/conf.d/", domainName + ".conf"), "wt")
 fin.write(data)
 fin.close()
 
