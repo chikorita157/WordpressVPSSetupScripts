@@ -5,7 +5,7 @@ def generatepassword ():
     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
     for pwd in range(12):
         password = ''
-        for c in range(length):
+        for c in range(12):
             password += random.choice(chars)
         return password
     
