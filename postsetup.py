@@ -78,7 +78,7 @@ os.chdir(script_dir)
 print("Setting host nmae")
 os.system("hostname " + domainName)
 
-if os.path.exists():
+if os.path.exists("/home/" + userName):
     print("User Exists, skipping user creation")
 else:
     print("Creating user " + userName)
