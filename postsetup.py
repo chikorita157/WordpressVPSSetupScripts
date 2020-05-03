@@ -3,7 +3,7 @@ import os
 if os.geteuid()==0:
   print("Running as root. Continuing")
 else:
-  print ()"User is not root, aborting")
+  print ("User is not root, aborting")
   exit()
 
 domainName = ""
