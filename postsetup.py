@@ -3,7 +3,7 @@ import random
 
 def generatepassword ():
     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
-    for pwd in range(number):
+    for pwd in range(12):
         password = ''
         for c in range(length):
             password += random.choice(chars)
