@@ -42,7 +42,7 @@ fin = open(os.path.join(script_dir, "configs/vhostsample.conf"), "rt")
 
 data = fin.read()
 data = data.replace('<targetusername>', userName)
-data = data.replace('<domain>', domainName)
+data = data.replace('<domain>', domainName)
 fin.close()
 fin = open(os.path.normpath("/etc/nginx/conf.d/" + domainName + ".conf"), "wt")
 fin.write(data)
