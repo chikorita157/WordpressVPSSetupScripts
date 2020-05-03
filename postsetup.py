@@ -34,7 +34,7 @@ fin = open(os.path.join(script_dir, "configs/www.conf"), "rt")
 data = fin.read()
 data = data.replace('<targetusername>', userName)
 fin.close()
-fin = open(os.path.normpath("/etc/php/7.4/fpm/pool.d/conf.d/www.conf"), "wt")
+fin = open(os.path.normpath("/etc/php/7.4/fpm/pool.d/www.conf"), "wt")
 fin.write(data)
 fin.close()
 
