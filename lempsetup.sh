@@ -37,5 +37,14 @@ done
  
     echo "Running Post Setup"
     python3 ./postsetup.py
+    
+    while true; do
+        read -p "Install SSL Certificates with Lets Encrypt to enable HTTPS support?" yn
+        case $yn in
+            [Yy]* ) echo 'export PATH=$PATH:/snap/bin' >> ~/.bashrc; snap install --beta --classic certbot; certbot --nginx; break;;
+            [Nn]* ) break;;
+            * ) echo "Please answer yes or no.";;
+        esac
+    done
 	exit 0
 fi

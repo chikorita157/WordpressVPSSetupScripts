@@ -67,9 +67,14 @@ os.system("cat dbcreation.sql | mysql -u root -p")
 print("Restarting Services")
 os.system("service php7.4-fpm restart");
 os.system("service nginx restart");
-
+print("Downloading and installing Wordpress files")
 os.system("wget https://wordpress.org/latest.zip");
 os.system("unzip latest.zip")
 os.system("mv wordpress /home/"+ userName + "/www")
 os.system("chown " + userName + ":" + userName + " /home/" + userName + "/www -R")
 print("Done. View your site at http://" + domainName)
+print("Use the following database information to setup WordPress:")
+print("Database: wordpress")
+print("Database Username: wordpress")
+print("Database Password: " + sqlpassword)
+

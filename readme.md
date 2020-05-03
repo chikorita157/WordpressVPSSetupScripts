@@ -5,4 +5,4 @@ These are a collection of scripts to easily setup a hosting enviroment suitable 
 ## Server Requirements
 * Ubuntu 20.04 or later
 * Root Accesss
-* SSH keys generated (Password Authentication is disabled by default)
+* SSH keys generated (strongly recommended)
