@@ -5,11 +5,10 @@ def generatepassword ():
     chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@£$%^&*().,?0123456789'
     for pwd in range(number):
         password = ''
-      for c in range(length):
-          password += random.choice(chars)
-    return password
+        for c in range(length):
+            password += random.choice(chars)
+        return password
     
-
 if os.geteuid()==0:
   print("Running as root. Continuing")
 else:
