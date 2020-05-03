@@ -71,4 +71,8 @@ print("Restarting Services")
 os.system("service php7.4-fpm restart");
 os.system("service nginx restart");
 
+os.system("wget https://wordpress.org/latest.zip");
+os.system("unzip latest.zip")
+os.system("mv wordpress /home/"+ userName + "/www")
+os.system("chown " + userName + ":" + username + " /home/" + userName + "/www -R")
 print("Done. View your site at http://" + domainName)
