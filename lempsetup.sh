@@ -3,11 +3,14 @@ if [ "$(id -u)" != "0" ]; then
 	echo "You must be root to run this script"
 		exit 1
 else
-	echo "Disabling Password Authentication"
-	# Disable password authentication
-	sudo grep -q "ChallengeResponseAuthentication" /etc/ssh/sshd_config && sed -i "/^[^#]*ChallengeResponseAuthentication[[:space:]]yes.*/c\ChallengeResponseAuthentication no" /etc/ssh/sshd_config || echo "ChallengeResponseAuthentication no" >> /etc/ssh/sshd_config
-	sudo grep -q "^[^#]*PasswordAuthentication" /etc/ssh/sshd_config && sed -i "/^[^#]*PasswordAuthentication[[:space:]]yes/c\PasswordAuthentication no" /etc/ssh/sshd_config || echo "PasswordAuthentication no" >> /etc/ssh/sshd_config
-	sudo service ssh restart
+while true; do
+    read -p "Disable Password Authentication and use SSH keys only to make your server more secure?" yn
+    case $yn in
+        [Yy]* ) echo "Disabling Password Authentication"; sudo grep -q "ChallengeResponseAuthentication" /etc/ssh/sshd_config && sed -i "/^[^#]*ChallengeResponseAuthentication[[:space:]]yes.*/c\ChallengeResponseAuthentication no" /etc/ssh/sshd_config || echo "ChallengeResponseAuthentication no" >> /etc/ssh/sshd_config; sudo grep -q "^[^#]*PasswordAuthentication" /etc/ssh/sshd_config && sed -i "/^[^#]*PasswordAuthentication[[:space:]]yes/c\PasswordAuthentication no" /etc/ssh/sshd_config || echo "PasswordAuthentication no" >> /etc/ssh/sshd_config; sudo service ssh restartl break;;
+        [Nn]* ) break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 	
 	apt update
 	echo "Installing required packages"
@@ -31,5 +34,8 @@ else
 	
 	echo "Restarting nginx"
 	systemctl restart nginx
+ 
+    echo "Running Post Setup"
+    python3 ./postsetup.py
 	exit 0
 fi
