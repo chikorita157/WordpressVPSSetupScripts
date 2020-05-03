@@ -62,7 +62,7 @@ os.system("adduser " + userName)
 os.system("cp -R ~/.ssh /home/" + userName)
 os.system("chown " + userName + ":" + userName + " .ssh -R")
 print("Creating database for Wordpress")
-os.system("mysql -u root –p< dbcreation.sql")
+os.system("mysql -u root < dbcreation.sql")
 print("Restarting Services")
 os.system("service php7.4-fpm restart");
 os.system("service nginx restart");
