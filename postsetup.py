@@ -42,7 +42,7 @@ fin = open(os.path.join(script_dir, "configs/vhostsample.conf"), "rt")
 
 data = fin.read()
 data = data.replace('<targetusername>', userName)
-data = data.replace('<domaib>', domainName)
+data = data.replace('<domain>', domainName)
 fin.close()
 fin = open(os.path.normpath("/etc/nginx/conf.d/" + domainName + ".conf"), "wt")
 fin.write(data)
@@ -62,7 +62,7 @@ os.system("adduser " + userName)
 os.system("cp -R ~/.ssh /home/" + userName)
 os.system("chown " + userName + ":" + userName + " .ssh -R")
 print("Creating database for Wordpress")
-os.system("mysql -u root –p < dbcreation.sql")
+os.system("mysql -u root –p< dbcreation.sql")
 print("Restarting Services")
 os.system("service php7.4-fpm restart");
 os.system("service nginx restart");
